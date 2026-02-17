@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Um espaço especial dedicado às memórias e momentos compartilhados">
+    <meta name="theme-color" content="#B91818">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <title>O Coração</title>
+
+    <link rel="icon" type="image/png" href="recursos/coracao.png">
+    <link rel="apple-touch-icon" href="recursos/coracao.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preload" href="recursos/coracao.png" as="image">
+    <link rel="preload" href="recursos/CloisterBlack.ttf" as="font" type="font/ttf" crossorigin>
+</head>
+
+<body>
+    <!-- Textura de fundo -->
+    <div class="background-texture" role="presentation" aria-hidden="true">
+        <img src="recursos/corrente.png" alt="">
+        <div class="vignette-overlay" id="vignette"></div>
+    </div>
+
+    <!-- Página inicial -->
+    <main class="container" id="firstPage">
+        <div class="countdown-container">
+            <div id="countdown" class="countdown" role="timer" aria-live="polite"></div>
+        </div>
+
+        <div class="heart-image" id="heart" role="button" tabindex="0" aria-label="Clique no coração para entrar">
+            <img src="recursos/coracao.png" alt="Coração Anatômico" draggable="false">
+        </div>
+
+        <h1>O CORAÇÃO</h1>
+        <p class="subtitle">SÓ ENTRE SE FOR FICAR</p>
+    </main>
+
+    <!-- Página principal -->
+    <section class="main-page" id="mainPage" aria-hidden="true">
+        <div class="main-content">
+            <!-- Cabeçalho -->
+            <header class="gothic-header">
+                <h2 class="page-title">DENTRO DO CORAÇÃO</h2>
+                <p class="page-subtitle">Não tem mais Volta</p>
+                <p class="time-greeting" id="timeGreeting" role="status" aria-live="polite"></p>
+            </header>
+
+            <!-- Grid de cards -->
+            <nav class="cards-grid" aria-label="Navegação principal">
+                <!-- Card 1: Oráculo -->
+                <article class="feature-card gothic-card" role="button" tabindex="0" onclick="openOracle()"
+                    onkeypress="handleKeyPress(event, openOracle)" aria-label="Abrir Oráculo">
+                    <img src="recursos/heart.png" alt="" class="gothic-icon-img" draggable="false" aria-hidden="true">
+                    <h3 class="feature-title">Oráculo</h3>
+                    <p class="feature-description">Descubra Algo Especial</p>
+                </article>
+
+                <!-- Card 2: CARTA (centro, maior) -->
+                <article class="feature-card envelope-card" role="button" tabindex="0" onclick="openLetter()"
+                    onkeypress="handleKeyPress(event, openLetter)" aria-label="Abrir carta especial">
+                    <img src="recursos/envelope.png" alt="Envelope selado" class="envelope-image" draggable="false">
+                </article>
+
+                <!-- Card 3: Memórias -->
+                <article class="feature-card gothic-card" role="button" tabindex="0" onclick="openGallery()"
+                    onkeypress="handleKeyPress(event, openGallery)" aria-label="Abrir Memórias">
+                    <img src="recursos/fotos.png" alt="" class="gothic-icon-img" draggable="false" aria-hidden="true">
+                    <h3 class="feature-title">Memórias</h3>
+                    <p class="feature-description">Nossas Memórias Juntos</p>
+                </article>
+
+                <!-- Card 4: Sinfonias -->
+                <article class="feature-card gothic-card" role="button" tabindex="0" onclick="openPlaylist()"
+                    onkeypress="handleKeyPress(event, openPlaylist)" aria-label="Abrir Sinfonias">
+                    <img src="recursos/musica.png" alt="" class="gothic-icon-img" draggable="false" aria-hidden="true">
+                    <h3 class="feature-title">Sinfonias</h3>
+                    <p class="feature-description">Nossas Músicas Marcantes</p>
+                </article>
+
+                <!-- Card 5: Mapa -->
+                <article class="feature-card gothic-card" role="button" tabindex="0" onclick="openMap()"
+                    onkeypress="handleKeyPress(event, openMap)" aria-label="Abrir Mapa">
+                    <img src="recursos/local.png" alt="" class="gothic-icon-img" draggable="false" aria-hidden="true">
+                    <h3 class="feature-title">Mapa</h3>
+                    <p class="feature-description">Nossos Lugares Especiais</p>
+                </article>
+            </nav>
+
+            <!-- Timer -->
+            <footer class="timer-card">
+                <h3 class="feature-title">Tempo de Vida Juntos</h3>
+                <div class="timer-display" id="relationshipTimer" role="timer" aria-live="polite"></div>
+                <p class="visit-counter" id="visitCounter" aria-live="polite"></p>
+            </footer>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <aside class="modal" id="letterModal" role="dialog" aria-modal="true" aria-labelledby="letterTitle"
+        onclick="closeModalOnBackdrop(event, 'letterModal')">
+        <div class="modal-content gothic-modal" role="document">
+            <div class="modal-header-ornament" aria-hidden="true">⸸ ✦ ⸸</div>
+            <div class="letter-content" id="letterTitle"></div>
+            <div class="modal-footer-ornament" aria-hidden="true">⸸ ✦ ⸸</div>
+        </div>
+    </aside>
+
+    <aside class="modal" id="oracleModal" role="dialog" aria-modal="true" aria-labelledby="oracleTitle"
+        onclick="closeModalOnBackdrop(event, 'oracleModal')">
+        <div class="modal-content gothic-modal" role="document">
+            <div class="modal-header-ornament" aria-hidden="true">⸸ ✦ ⸸</div>
+            <div class="oracle-content" id="oracleText" role="status"></div>
+            <div class="modal-footer-ornament" aria-hidden="true">⸸ ✦ ⸸</div>
+        </div>
+    </aside>
+
+    <aside class="modal" id="galleryModal" role="dialog" aria-modal="true" aria-label="Galeria de memórias"
+        onclick="closeModalOnBackdrop(event, 'galleryModal')">
+        <div role="document">
+            <div class="modal-header-ornament" aria-hidden="true">⸸ ✦ ⸸</div>
+            <div class="single-polaroid">
+                <div class="gallery-grid" id="galleryGrid"></div>
+            </div>
+            <div class="modal-footer-ornament" aria-hidden="true">⸸ ✦ ⸸</div>
+        </div>
+    </aside>
+
+    <aside class="modal" id="playlistModal" role="dialog" aria-modal="true" aria-labelledby="playlistTitle"
+        onclick="closeModalOnBackdrop(event, 'playlistModal')">
+        <div class="modal-content gothic-modal" role="document">
+            <div class="modal-header-ornament" aria-hidden="true">⸸ ✦ ⸸</div>
+            <div class="letter-content" id="playlistTitle"></div>
+            <div class="modal-footer-ornament" aria-hidden="true">⸸ ✦ ⸸</div>
+        </div>
+    </aside>
+
+    <aside class="modal" id="mapModal" role="dialog" aria-modal="true" aria-label="Mapa de lugares especiais"
+        onclick="closeModalOnBackdrop(event, 'mapModal')">
+        <div role="document">
+            <div class="modal-header-ornament" aria-hidden="true">⸸ ✦ ⸸</div>
+            <div class="single-polaroid">
+                <div class="letter-content"></div>
+            </div>
+            <div class="modal-footer-ornament" aria-hidden="true">⸸ ✦ ⸸</div>
+        </div>
+    </aside>
+
+    <script src="js/script.js" defer></script>
+</body>
+
+</html>
