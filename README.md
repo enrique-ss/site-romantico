@@ -10,15 +10,15 @@ Clone o repositório e abra o `index.html` com o Live Server.
 
 ## O que tem dentro
 
-**Oráculo** — frases carinhosas sortidas a cada visita
+**Oráculo**: frases carinhosas sortidas a cada visita
 
-**Carta** — cartas de amor sortidas, editáveis no código
+**Carta**: cartas de amor sortidas, editáveis no código
 
-**Memórias** — galeria de fotos em estilo polaroid com legenda
+**Memórias**: galeria de fotos em estilo polaroid com legenda
 
-**Sinfonias** — músicas do Spotify que marcaram o relacionamento
+**Sinfonias**: músicas do Spotify que marcaram o relacionamento
 
-**Mapa** — fotos dos lugares especiais que vocês foram juntos
+**Mapa**: fotos dos lugares especiais que vocês foram juntos
 
 ## Como personalizar
 
